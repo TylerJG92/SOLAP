@@ -1,1 +1,17 @@
-//this is meant to be used later for the custom injections into the games code. TODO Delete this
+{
+  "actors": {},
+  "buckets": {},
+  "savestates": [],
+  "combat_skills": [],
+  "effects": {},
+  "emitters": {},
+  "projectiles": {},
+  "items": {},
+  "textscripts": {
+    "titlescreen_rightblock": "popup:\nsay You hear the sounds of a diner behind you. Maybe someone there can help you with your little magazine-on-the-face problem.(inserted log note for test)\noption (e) Or I could give up [return to main menu]\n\ne:\naddflag (waa.returnedtomain)\naside (5000) delflag (waa.returnedtomain) \n// above is to deal with a weird murdervolume issue\ndisableplayerinput(500)\ndelflag(element:player.interesting)\naddflag(element:billboard.interesting)\nqueue (500) changewaaproperty(hideplayer, 1)\nclosepopup"
+  },
+  "skills": {},
+  "waas": {},
+  "anims": {},
+  "aliases": {}
+}  

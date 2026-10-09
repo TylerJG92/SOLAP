@@ -429,6 +429,7 @@ FodyWeavers.xsd
 
 *.code-workspace
 ref/
+handoff.md
 
 # Generated/collected Mod Manager package binaries
 ModManager_Packager/**/*.dll
