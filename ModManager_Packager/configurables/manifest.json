@@ -1,0 +1,9 @@
+{
+  "name": "",
+  "version_number": "",
+  "website_url": "https://github.com/TylerJG92/SOLAP",
+  "description": "Archipelago randomizer integration for Shadows Over Loathing.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2305"
+  ]
+}

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>  
+
+  <ItemGroup>
+    <PackageReference Include="Archipelago.MultiClient.Net" Version="6.7.1" />
+    <PackageReference Include="MonoMod.Backports" Version="1.1.2" />
+    <PackageReference Include="MonoMod.ILHelpers" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
