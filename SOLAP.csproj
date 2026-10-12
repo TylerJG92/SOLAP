@@ -2,6 +2,39 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>preview</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
+  <ItemGroup>
+  <Compile Remove="patcher\**\*.cs" />
+  <Compile Remove="ModManager_Packager\**\*.cs" />
+  <Compile Remove="ref\NoCompile\**\*.cs" />
+  <Compile Remove="ref\NoCompile\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Archipelago.MultiClient.Net" Version="6.7.1" />
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="HarmonyX" Version="2.13.0" PrivateAssets="all" />
+    <PackageReference Include="UnityEngine.Modules" Version="2019.4.2" IncludeAssets="compile" PrivateAssets="all" />
+    <Reference Include="Assembly-CSharp" PrivateAssets="all">
+      <HintPath>ref\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI" PrivateAssets="all">
+      <HintPath>ref\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="src\custom_data.json" />
+  </ItemGroup>
 </Project>

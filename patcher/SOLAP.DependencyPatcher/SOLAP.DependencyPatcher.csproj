@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net35</TargetFramework>
+  </PropertyGroup>
+
+<ItemGroup>
+    <PackageReference Include="Mono.Cecil" Version="0.10.4" />
+    <PackageReference Include="BepInEx.BaseLib" Version="5.4.21" />
+  </ItemGroup>
+
+</Project>

@@ -429,3 +429,13 @@ FodyWeavers.xsd
 
 *.code-workspace
 ref/
+handoff.md
+
+# Generated/collected Mod Manager package binaries
+ModManager_Packager/**/*.dll
+ModManager_Packager/**/*.zip
+ModManager_Packager/**/*.pdb
+
+# Generated Mod Manager package output
+ModManager_Packager/output/
+ModManager_Packager/temp/
