@@ -10,7 +10,7 @@ namespace SOLAP
     {
         [HarmonyPatch(typeof(ModelManager), "ParseJson", new Type[0])]
         [HarmonyPostfix]
-        private static async void LoadSOLAPData()
+        private static async void LoadAndInjectSOLAPData()
         {
             byte[] fileData;
             using (var dataStream = typeof(SolapPlugin).Assembly.GetManifestResourceStream("SOLAP.src.custom_data.json"))
@@ -23,15 +23,26 @@ namespace SOLAP
             else
             {
                 string fileText = Encoding.UTF8.GetString(fileData);
-                JSONObject jsonFile = JSONObject.ParseStream(fileText);
-                JSONObject tScripts = jsonFile.GetField("textscripts");
                 SolapPlugin.Log.LogInfo("Parsing custom JSON data...");
-                foreach(string strId in tScripts.keys)
+                JSONObject jsonFile = JSONObject.ParseStream(fileText);
+                foreach(string outerField in jsonFile.keys)
                 {
-                    string strCode = tScripts.GetField(strId).str;          
-                    ModelManager.FTryParseAndLoadScript(strId, strCode);
-                }                
-                SolapPlugin.Log.LogInfo("Custom JSON data parsed and merged.");
+                    SolapPlugin.Log.LogInfo($"Checking {outerField} for code to inject...");
+                    JSONObject indId = jsonFile.GetField(outerField);
+                    if(indId.Count == 0){
+                        SolapPlugin.Log.LogWarning($"No code in {outerField} to inject, skipping.");
+                        continue;
+                    }
+                    else
+                    {
+                        foreach(string strId in indId.keys)
+                        {
+                            string strCode = indId.GetField(strId).str;
+                            ModelManager.FTryParseAndLoadScript(strId, strCode);
+                        }
+                    }
+                }
+                SolapPlugin.Log.LogInfo("All custom JSON data parsed and merged.");
             }
         }
     }
